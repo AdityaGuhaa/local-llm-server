@@ -1,0 +1,22 @@
+# Environment variables
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+conda/
+
+# Models / LLM files
+models/
+*.bin
+*.gguf
+*.pt
+*.ckpt
+
+# OS files
+.DS_Store
