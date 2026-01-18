@@ -15,7 +15,7 @@ class OllamaClient:
 
     def generate(self, prompt: str) -> Optional[str]:
         """
-        Send a prompt to Ollama and return the generated response text.
+        Blocking text generation using Ollama.
         """
 
         url = f"{self.base_url}/api/generate"
@@ -27,11 +27,16 @@ class OllamaClient:
         }
 
         try:
-            response = requests.post(url, json=payload, timeout=self.timeout)
+            response = requests.post(
+                url,
+                json=payload,
+                timeout=self.timeout,
+            )
             response.raise_for_status()
+
             data = response.json()
             return data.get("response")
 
         except requests.exceptions.RequestException as e:
-            print(f"[OllamaClient] Error communicating with Ollama: {e}")
+            print("[OllamaClient] Error:", e)
             return None

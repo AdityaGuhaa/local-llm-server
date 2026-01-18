@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 from app.services.ollama_client import OllamaClient
 
-router = APIRouter(prefix="/chat", tags=["chat"])
+router = APIRouter()
 
 client = OllamaClient()
 
@@ -12,15 +12,14 @@ class ChatRequest(BaseModel):
     prompt: str
 
 
-class ChatResponse(BaseModel):
-    response: str
-
-
-@router.post("/", response_model=ChatResponse)
+@router.post("/chat/")
 def chat(request: ChatRequest):
+    print("🔥 /chat endpoint HIT")
+    print("Prompt:", request.prompt)
+
     result = client.generate(request.prompt)
 
     if result is None:
         raise HTTPException(status_code=500, detail="LLM generation failed")
 
-    return ChatResponse(response=result)
+    return {"response": result}
