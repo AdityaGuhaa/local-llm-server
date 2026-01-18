@@ -83,6 +83,7 @@ This makes the project ideal for learning, experimentation, and privacy-sensitiv
 ### Local LLM Stack
 
 * **Ollama** – Local LLM runtime used to serve and manage models
+* **Model** - https://ollama.com/library/gpt-oss:20b
 * **Large Language Model** – Runs locally via Ollama (model configurable)
 
 ### Development & Tooling
@@ -155,3 +156,4 @@ This project is useful for:
 ## 📄 License
 
 This project is intended for educational and experimental purposes.
+
