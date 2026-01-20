@@ -5,6 +5,9 @@
   <meta charset="UTF-8" />
   <title>Local LLM Chat</title>
   <link rel="stylesheet" href="/static/style.css" />
+
+  <!-- Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -34,7 +37,15 @@
     function addMessage(text, sender) {
       const msg = document.createElement("div");
       msg.className = sender === "user" ? "msg user" : "msg ai";
-      msg.textContent = text;
+
+      if (sender === "ai") {
+        // Render Markdown to HTML for AI messages
+        msg.innerHTML = marked.parse(text);
+      } else {
+        // Keep user messages as plain text (safe)
+        msg.textContent = text;
+      }
+
       chatBox.appendChild(msg);
       chatBox.scrollTop = chatBox.scrollHeight;
     }
