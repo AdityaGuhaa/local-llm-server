@@ -4,6 +4,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 
+import socket
+
 from app.api.chat import router as chat_router
 
 app = FastAPI(
@@ -11,6 +13,28 @@ app = FastAPI(
     description="Private self-hosted LLM backend",
     version="0.1.0",
 )
+
+def get_local_ip():
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
+
+
+@app.on_event("startup")
+def startup_banner():
+    ip = get_local_ip()
+    print("\n" + "=" * 50)
+    print(" 🚀 Local LLM Server is LIVE")
+    print(f" 📍 Network Address : http://{ip}:8000")
+    print(f" 📘 API Docs        : http://{ip}:8000/docs")
+    print(" 🔒 Mode            : Private LAN Server")
+    print("=" * 50 + "\n")
+
 
 # ✅ CORS (THIS FIXES iPhone / other devices)
 app.add_middleware(
