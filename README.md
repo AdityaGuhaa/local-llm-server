@@ -107,7 +107,7 @@ This design keeps the system **model-agnostic**, allowing future upgrades or exp
 
 ---
 
-## 🧩 How We Reached the Goal
+## 🧩 How I Reached the Goal
 
 The project was developed using an iterative and learning-focused workflow:
 
@@ -156,4 +156,7 @@ This project is useful for:
 ## 📄 License
 
 This project is intended for educational and experimental purposes.
+
+## Commands
+To make Server Live: uvicorn app.main:app --host 0.0.0.0 --port 8000
 
