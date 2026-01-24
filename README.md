@@ -1,4 +1,4 @@
-<img width="817" height="236" alt="Screenshot 2026-01-09 221148" src="https://github.com/user-attachments/assets/6bcb493d-d30b-4045-9b1d-831420052e38" />
+<img width="1919" height="1076" alt="Screenshot 2026-01-24 180120" src="https://github.com/user-attachments/assets/473856d4-7046-4132-8ba8-a789af0f89b7" />
 
 <img width="1920" height="1080" alt="Screenshot from 2026-01-24 18-04-41" src="https://github.com/user-attachments/assets/a3ddf6f3-c654-4690-91dc-fda77609fc6f" />
 
@@ -165,5 +165,6 @@ This project is intended for educational and experimental purposes.
 
 ## Commands
 To make Server Live: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
 
 
